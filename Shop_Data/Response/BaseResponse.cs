@@ -1,11 +1,11 @@
-﻿using Shop_Domain.Enum;
+﻿using Shop.Domain.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shop_Domain.Response
+namespace Shop.Domain.Response
 {
     public class BaseResponse<T> : IBaseResponse<T>
     {

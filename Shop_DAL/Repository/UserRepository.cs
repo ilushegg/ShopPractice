@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Shop_DAL.Data;
-using Shop_DAL.Interface;
-using Shop_Domain.Entity;
+using Shop.DAL.Data;
+using Shop.DAL.Interface;
+using Shop.Domain.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shop_DAL.Repository
+namespace Shop.DAL.Repository
 {
     public class UserRepository : IUserRepository
     {

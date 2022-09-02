@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shop_DAL.Interface
+namespace Shop.DAL.Interface
 {
     public interface IBaseRepository<T>
     {

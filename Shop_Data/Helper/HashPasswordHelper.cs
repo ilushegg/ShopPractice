@@ -5,7 +5,7 @@ using System.Text;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 
-namespace Shop_Domain.Helper
+namespace Shop.Domain.Helper
 {
     public class HashPasswordHelper
     {

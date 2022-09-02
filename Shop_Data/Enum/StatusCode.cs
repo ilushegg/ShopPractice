@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shop_Domain.Enum
+namespace Shop.Domain.Enum
 {
     public enum StatusCode
     {

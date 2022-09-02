@@ -1,21 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Shop_DAL.Interface;
-using Shop_Domain.Entity;
-using Shop_Domain.Enum;
-using Shop_Domain.Helper;
-using Shop_Domain.Response;
-using Shop_Domain.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+using Shop.DAL.Interface;
+using Shop.Domain.Entity;
+using Shop.Domain.Enum;
+using Shop.Domain.Helper;
+using Shop.Domain.Response;
+using Shop.Domain.ViewModel;
+using Shop.Service.Interfaces;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Shop_Service.Implementations
+
+namespace Shop.Service.Implementations
 {
-    public class UserService
+    public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
 
@@ -44,20 +40,35 @@ namespace Shop_Service.Implementations
                     Password = HashPasswordHelper.HashPassowrd(model.Password)
                 };
                 await _userRepository.Create(user);
+                var result = Authenticate(user);
+
                 return new BaseResponse<ClaimsIdentity>()
                 {
-                    StatusCode = StatusCode.OK,
+                    Data = result,
+                    Description = "Object has been added",
+                    StatusCode = StatusCode.OK
                 };
             }
             catch(Exception ex)
             {
                 return new BaseResponse<ClaimsIdentity>()
                 {
-                    Description = "An internal error",
+                    Description = ex.Message,
                     StatusCode = StatusCode.InternalServerError
                 };
 
             }
+        }
+
+        private ClaimsIdentity Authenticate(User user)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimsIdentity.DefaultNameClaimType, user.Name),
+                new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role.ToString())
+            };
+            return new ClaimsIdentity(claims, "ApplicationCookie",
+                ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
         }
     }
 }

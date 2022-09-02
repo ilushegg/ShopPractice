@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shop_Domain.ViewModel
+namespace Shop.Domain.ViewModel
 {
     public class RegisterViewModel
     {

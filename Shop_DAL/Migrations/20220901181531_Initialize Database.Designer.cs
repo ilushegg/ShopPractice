@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Shop_DAL.Data;
+using Shop.DAL.Data;
 
 #nullable disable
 
-namespace Shop_DAL.Migrations
+namespace Shop.DAL.Migrations
 {
     [DbContext(typeof(DataContext))]
     [Migration("20220901181531_Initialize Database")]

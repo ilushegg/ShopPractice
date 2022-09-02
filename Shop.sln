@@ -5,11 +5,11 @@ VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop", "Shop\Shop.csproj", "{559D5A22-9A9D-4F76-9B88-878C20E3B7BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop_Domain", "Shop_Data\Shop_Domain.csproj", "{367C1114-3921-4363-9234-AD65178D56F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.Domain", "Shop_Data\Shop.Domain.csproj", "{367C1114-3921-4363-9234-AD65178D56F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop_DAL", "Shop_DAL\Shop_DAL.csproj", "{36D15513-4D84-4017-A4A2-E4DC4E085F62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.DAL", "Shop_DAL\Shop.DAL.csproj", "{36D15513-4D84-4017-A4A2-E4DC4E085F62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop_Service", "Shop_Service\Shop_Service.csproj", "{E5A0517D-C0C7-44BE-B37B-B0D613B04817}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.Service", "Shop_Service\Shop.Service.csproj", "{E5A0517D-C0C7-44BE-B37B-B0D613B04817}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

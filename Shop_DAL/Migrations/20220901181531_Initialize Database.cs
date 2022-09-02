@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Shop_DAL.Migrations
+namespace Shop.DAL.Migrations
 {
     public partial class InitializeDatabase : Migration
     {
