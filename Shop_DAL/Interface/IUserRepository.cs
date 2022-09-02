@@ -9,6 +9,6 @@ namespace Shop_DAL.Interface
 {
     public interface IUserRepository : IBaseRepository<User>
     {
-        
+        IQueryable<User> GetAll();
     }
 }

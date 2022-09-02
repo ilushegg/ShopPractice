@@ -14,7 +14,9 @@ namespace Shop_Domain.Enum
 
         OK = 200,
 
-        InternalServerError = 500
+        InternalServerError = 500,
+
+        CommonError = 1000
 
     }
 }

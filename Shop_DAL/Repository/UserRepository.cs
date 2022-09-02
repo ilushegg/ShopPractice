@@ -38,9 +38,14 @@ namespace Shop_DAL.Repository
             return await _dataContext.Users.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<List<User>> GetAll()
+        public async Task<List<User>> GetAllList()
         {
             return await _dataContext.Users.ToListAsync();
+        }
+
+        public IQueryable<User> GetAll()
+        {
+            return _dataContext.Users;
         }
 
         public async Task<bool> Delete(User entity)

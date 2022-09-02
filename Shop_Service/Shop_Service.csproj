@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Shop_DAL\Shop_DAL.csproj" />
     <ProjectReference Include="..\Shop_Data\Shop_Domain.csproj" />
   </ItemGroup>
 

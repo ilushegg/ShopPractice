@@ -16,6 +16,6 @@ namespace Shop_DAL.Interface
 
         Task<T> Get(int id);
 
-        Task<List<T>> GetAll();
+        Task<List<T>> GetAllList();
     }
 }
