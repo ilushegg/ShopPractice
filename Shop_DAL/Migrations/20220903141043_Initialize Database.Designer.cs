@@ -11,7 +11,7 @@ using Shop.DAL.Data;
 namespace Shop.DAL.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220901181531_Initialize Database")]
+    [Migration("20220903141043_Initialize Database")]
     partial class InitializeDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,7 +23,25 @@ namespace Shop.DAL.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Shop_Domain.Entity.Product", b =>
+            modelBuilder.Entity("Shop.Domain.Entity.Cart", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<long>("ProductId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Cart");
+                });
+
+            modelBuilder.Entity("Shop.Domain.Entity.Product", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -51,13 +69,16 @@ namespace Shop.DAL.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("Shop_Domain.Entity.User", b =>
+            modelBuilder.Entity("Shop.Domain.Entity.User", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<long>("CartId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -76,7 +97,31 @@ namespace Shop.DAL.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CartId");
+
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Shop.Domain.Entity.Cart", b =>
+                {
+                    b.HasOne("Shop.Domain.Entity.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Shop.Domain.Entity.User", b =>
+                {
+                    b.HasOne("Shop.Domain.Entity.Cart", "Cart")
+                        .WithMany()
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cart");
                 });
 #pragma warning restore 612, 618
         }
