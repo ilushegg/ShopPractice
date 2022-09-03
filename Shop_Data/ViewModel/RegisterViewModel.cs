@@ -14,6 +14,10 @@ namespace Shop.Domain.ViewModel
         [MinLength(3, ErrorMessage = "Your name should be more than 3 characters")]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "Specify your email")]
+        [EmailAddress]
+        public string Email { get; set; }
+
         [Required(ErrorMessage = "Specify the password")]
         [DataType(DataType.Password)]
         [MinLength(6, ErrorMessage = "Your password should be more than 6 characters")]

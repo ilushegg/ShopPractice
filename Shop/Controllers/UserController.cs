@@ -38,6 +38,27 @@ namespace Shop.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public IActionResult Login() => View();
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var response = await _userService.Login(model);
+                if (response.StatusCode == Domain.Enum.StatusCode.OK)
+                {
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                        new ClaimsPrincipal(response.Data));
+
+                    return RedirectToAction("Index", "Home");
+                }
+                ModelState.AddModelError("", response.Description);
+            }
+            return View(model);
+        }
+
 
     }
 }
