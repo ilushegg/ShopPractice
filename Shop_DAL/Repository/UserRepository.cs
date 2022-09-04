@@ -33,7 +33,7 @@ namespace Shop.DAL.Repository
             return true;
         }
 
-        public async Task<User> Get(int id)
+        public async Task<User> Get(long id)
         {
             return await _dataContext.Users.FirstOrDefaultAsync(x => x.Id == id);
         }

@@ -14,7 +14,7 @@ namespace Shop.DAL.Interface
 
         Task<bool> Delete(T entity);
 
-        Task<T> Get(int id);
+        Task<T> Get(long id);
 
         Task<List<T>> GetAllList();
     }

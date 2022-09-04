@@ -40,7 +40,7 @@ namespace Shop.DAL.Repository
             return true;
         }
 
-        public async Task<Product> Get(int id)
+        public async Task<Product> Get(long id)
         {
             return await _dataContext.Products.FirstOrDefaultAsync(x => x.Id == id);
         }
