@@ -10,7 +10,7 @@ namespace Shop.Domain.Entity
 
         public string Description { get; set; }
 
-        public decimal Price { get; set; }
+        public float Price { get; set; }
 
         public string? Picture { get; set; }
 

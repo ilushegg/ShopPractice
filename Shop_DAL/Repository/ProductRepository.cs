@@ -23,6 +23,7 @@ namespace Shop.DAL.Repository
         public async Task<bool> Create(Product entity)
         {
             await _dataContext.Products.AddAsync(entity);
+            await _dataContext.SaveChangesAsync();
             return true;
         }
 

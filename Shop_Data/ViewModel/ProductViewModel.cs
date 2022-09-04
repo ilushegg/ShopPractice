@@ -13,7 +13,7 @@ namespace Shop.Domain.ViewModel
 
         public string Description { get; set; }
 
-        public decimal Price { get; set; }
+        public float Price { get; set; }
 
         public IFormFile? Picture { get; set; }
 
