@@ -17,9 +17,10 @@ namespace Shop.Service.Implementations
         private readonly IProductRepository _productRepository;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ProductService(IProductRepository productRepository)
+        public ProductService(IProductRepository productRepository, IWebHostEnvironment webHostEnvironment)
         {
             _productRepository = productRepository;
+            _webHostEnvironment = webHostEnvironment;
         }
         
 
