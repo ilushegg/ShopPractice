@@ -15,5 +15,9 @@ namespace Shop.Domain.Entity
         public string? Picture { get; set; }
 
         public DateTime? CreateDate { get; set; }
+
+        public long? UserId { get; set; }
+
+        public User? User { get; set; }
     }
 }

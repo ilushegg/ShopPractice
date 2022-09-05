@@ -10,5 +10,7 @@ namespace Shop.DAL.Interface
     public interface IUserRepository : IBaseRepository<User>
     {
         IQueryable<User> GetAll();
+
+        Task<User> GetByname(string name);
     }
 }

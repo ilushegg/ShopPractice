@@ -38,6 +38,11 @@ namespace Shop.DAL.Repository
             return await _dataContext.Users.FirstOrDefaultAsync(x => x.Id == id);
         }
 
+        public async Task<User> GetByname(string name)
+        {
+            return await _dataContext.Users.FirstOrDefaultAsync(x => x.Name == name);
+        }
+
         public async Task<List<User>> GetAllList()
         {
             return await _dataContext.Users.ToListAsync();

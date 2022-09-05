@@ -8,19 +8,24 @@ using Shop.Domain.ViewModel;
 using Shop.Service.Interfaces;
 using Microsoft.AspNetCore.Hosting;
 using System.Security.Claims;
-
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
 
 namespace Shop.Service.Implementations
 {
     public class ProductService : IProductService
     {
         private readonly IProductRepository _productRepository;
+        private readonly IUserRepository _userRepository;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public ProductService(IProductRepository productRepository, IWebHostEnvironment webHostEnvironment)
+        public ProductService(IProductRepository productRepository, IWebHostEnvironment webHostEnvironment, IHttpContextAccessor httpContextAccessor, IUserRepository userRepository)
         {
             _productRepository = productRepository;
             _webHostEnvironment = webHostEnvironment;
+            _httpContextAccessor = httpContextAccessor;
+            _userRepository = userRepository;
         }
         
 
@@ -76,12 +81,15 @@ namespace Shop.Service.Implementations
         {
             try
             {
+                var user = await _userRepository.GetByname(_httpContextAccessor.HttpContext.User.Identity.Name);
+                Console.WriteLine(user.Id);
                 var product = new Product()
                 {
                     Name = model.Name,
                     Description = model.Description,
                     Price = model.Price,
                     CreateDate = model.CreateDate,
+                    UserId = user.Id
                 };
 
                 if (model.Picture != null)
