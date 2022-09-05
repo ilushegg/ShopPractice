@@ -14,7 +14,7 @@ namespace Shop.Domain.Entity
 
         public Role Role { get; set; }
 
-        public long CartId { get; set; }
+        public long? CartId { get; set; }
 
         public Cart? Cart { get; set; }
 

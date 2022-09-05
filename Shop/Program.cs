@@ -20,8 +20,8 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/User/Login");
-        options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/User/Login");
+        options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Users/Login");
+        options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Users/Login");
     });
 
 

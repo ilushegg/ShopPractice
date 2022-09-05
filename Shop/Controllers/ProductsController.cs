@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Shop.Domain.ViewModel;
 using Shop.Service.Implementations;
 using Shop.Service.Interfaces;
@@ -28,9 +29,12 @@ namespace Shop.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Add() => View();
 
+
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Add(ProductViewModel model)
         {
             if (ModelState.IsValid)

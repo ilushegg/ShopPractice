@@ -52,7 +52,7 @@ namespace Shop.Controllers
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                         new ClaimsPrincipal(response.Data));
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Products", "Products");
                 }
                 ModelState.AddModelError("", response.Description);
             }
