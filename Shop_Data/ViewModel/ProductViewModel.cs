@@ -16,7 +16,5 @@ namespace Shop.Domain.ViewModel
         public float Price { get; set; }
 
         public IFormFile? Picture { get; set; }
-
-        public DateTime? CreateDate { get; set; }
     }
 }

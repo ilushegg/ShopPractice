@@ -22,11 +22,13 @@
             @item.Name
         </div>
         <div class="product_cards__author">
-                @if (item.AuthorName != null) {
-                    @item.AuthorName
-                }
-            </div>
-
+            @if (item.AuthorName != null) {
+                @item.AuthorName
+            }
+        </div>
+        <div class="product_cards__date">
+            @item.CreateDate.ToLocalTime()
+        </div>
         <a class="button" asp-action="Edit" asp-route-id="@item.Id">Add to cart</a>
         @*<form asp-controller="People" asp-action="Delete" method="post" asp-route-id="@item.Id">
             <input class="button" type="submit" value="Delete" />

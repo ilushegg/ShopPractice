@@ -88,7 +88,7 @@ namespace Shop.Service.Implementations
                     Name = model.Name,
                     Description = model.Description,
                     Price = model.Price,
-                    CreateDate = model.CreateDate,
+                    CreateDate = DateTime.UtcNow,
                     AuthorName = user.Name
 
                 };
