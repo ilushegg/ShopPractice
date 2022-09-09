@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Shop.DAL.Data;
 
@@ -11,9 +12,10 @@ using Shop.DAL.Data;
 namespace Shop.DAL.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220909152728_Fix 2")]
+    partial class Fix2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,6 +50,9 @@ namespace Shop.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
+                    b.Property<long?>("AuthorId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("AuthorName")
                         .HasColumnType("nvarchar(max)");
 
@@ -69,6 +74,8 @@ namespace Shop.DAL.Migrations
                         .HasColumnType("real");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
 
                     b.ToTable("Products");
                 });
@@ -115,6 +122,15 @@ namespace Shop.DAL.Migrations
                         .IsRequired();
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Shop.Domain.Entity.Product", b =>
+                {
+                    b.HasOne("Shop.Domain.Entity.User", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId");
+
+                    b.Navigation("Author");
                 });
 
             modelBuilder.Entity("Shop.Domain.Entity.User", b =>

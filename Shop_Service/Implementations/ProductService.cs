@@ -89,7 +89,8 @@ namespace Shop.Service.Implementations
                     Description = model.Description,
                     Price = model.Price,
                     CreateDate = model.CreateDate,
-                    UserId = user.Id
+                    AuthorName = user.Name
+
                 };
 
                 if (model.Picture != null)
@@ -100,12 +101,12 @@ namespace Shop.Service.Implementations
                 }
 
                 await _productRepository.Create(product);
-                return new BaseResponse<Product>() 
+                return new BaseResponse<Product>()
                 {
                     StatusCode = StatusCode.OK
                 };
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new BaseResponse<Product>()
                 {
@@ -153,13 +154,13 @@ namespace Shop.Service.Implementations
             try
             {
                 var product = await _productRepository.Get(id);
-                if(product == null)
+                if (product == null)
                 {
                     baseResponse.StatusCode = StatusCode.ProductNotFound;
                     baseResponse.Description = "Product is not found";
                     return baseResponse;
                 }
-                if(product.Picture != null)
+                if (product.Picture != null)
                 {
                     var uploads = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
                     var filePath = Path.Combine(uploads, product.Picture);
@@ -170,7 +171,7 @@ namespace Shop.Service.Implementations
                 baseResponse.StatusCode = StatusCode.OK;
                 return baseResponse;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new BaseResponse<bool>()
                 {
